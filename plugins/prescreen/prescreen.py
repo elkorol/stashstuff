@@ -5,7 +5,7 @@ import json
 try:
     import stashapi.log as log
     from stashapi.tools import human_bytes
-    from stashapi.types import PhashDistance
+    from stashapi.stash_types import PhashDistance
     from stashapi.stashapp import StashInterface
     from stashapi.stashbox import StashBoxInterface
 except ModuleNotFoundError:
@@ -192,13 +192,13 @@ if PLUGIN_ARGS:
             if len(alltags) != len(stashboxes)*3:
                 for item, endpoint in enumerate(stashboxes):
                    endpoint_name = endpoint["name"]
-                   noresult = f'{endpoint_name} - no result'
+                   noresult = f'一:Prescreen: {endpoint_name}: No Result'
                    stashboxes[item]["noresult"] = stash.find_tag(noresult, create=True).get("id")
                    alltags.append(stashboxes[item]["noresult"])
-                   oneresult = f'{endpoint_name} - single'
+                   oneresult = f'一:Prescreen: {endpoint_name}: Single Result'
                    stashboxes[item]["oneresult"] = stash.find_tag(oneresult, create=True).get("id")
                    alltags.append(stashboxes[item]["oneresult"])
-                   manyresult = f'{endpoint_name} - multi'
+                   manyresult = f'一:Prescreen: {endpoint_name}: Multiple Results'
                    stashboxes[item]["manyresult"] = stash.find_tag(manyresult, create=True).get("id")
                    alltags.append(stashboxes[item]["manyresult"])
                 configfile_edit("config.py", "alltags", str(alltags))
@@ -221,13 +221,13 @@ stashboxes = stash.get_stashbox_connections()
 if len(alltags) != len(stashboxes)*3:
                 for item, endpoint in enumerate(stashboxes):
                    endpoint_name = endpoint["name"]
-                   noresult = f'{endpoint_name} - no result'
+                   noresult = f'一:Prescreen: {endpoint_name}: No Result'
                    stashboxes[item]["noresult"] = stash.find_tag(noresult, create=True).get("id")
                    alltags.append(stashboxes[item]["noresult"])
-                   oneresult = f'{endpoint_name} - single'
+                   oneresult = f'一:Prescreen: {endpoint_name}: Single Result'
                    stashboxes[item]["oneresult"] = stash.find_tag(oneresult, create=True).get("id")
                    alltags.append(stashboxes[item]["oneresult"])
-                   manyresult = f'{endpoint_name} - multi'
+                   manyresult = f'一:Prescreen: {endpoint_name}: Multiple Results'
                    stashboxes[item]["manyresult"] = stash.find_tag(manyresult, create=True).get("id")
                    alltags.append(stashboxes[item]["manyresult"])
                 configfile_edit("config.py", "alltags", str(alltags))
